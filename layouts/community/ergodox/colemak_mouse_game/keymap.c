@@ -12,6 +12,10 @@
 #include "keymap_jp.h"
 #include "keymap_bepo.h"
 
+#ifdef MOUSEKEY_ENABLE
+#include "mousekey.h"
+#endif
+
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
 #define KC_MAC_COPY LGUI(KC_C)
@@ -151,10 +155,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
         break;
   }
-  return process_record_keymap(keycode, record);
-#else /*MOUSEKEY_ENABLE*/
+#endif /*MOUSEKEY_ENABLE*/
   return true;
-#endif
 }
 
 uint32_t layer_state_set_user(uint32_t state) {
